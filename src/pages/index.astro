@@ -44,6 +44,18 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
         </div>
         <GlitchImage pcSrc="/img/hero3.jpg" mobileSrc="/img/hero_mobile.jpg" alt="" client:load />
     </section>
+    {/* Works */}
+    <section class="snap-start py-8 bg-white flex flex-col gap-8 h-screen items-center snap-start overflow-y-scroll w-full overflow-x-hidden relative">
+        <div class="absolute top-4 bg-black pt-2 px-6 z-10 mix-blend-exclusion">
+            <GlitchText text="Works" className="text-5xl md:text-6xl lg:text-7xl" centered="true" />
+        </div>
+        <div class="w-full z-10 h-screen pt-32">
+            <CardCarousel client:load />
+        </div>
+        <div class="w-full absolute top-0" style="filter: brightness(25%)">
+            <ResponsiveVideo src="/mov/AdobeStock_294764508.mp4" client:load/>
+        </div>
+    </section>
     <FadeInSection client:load className="snap-start bg-gradient-to-t from-gray-700 to-gray-950 min-h-screen">
         <div class="fade-item flex flex-col gap-8 p-8 items-center justify-center overflow-x-hidden">
             <GlitchText text="About me" className="text-5xl md:text-6xl lg:text-7xl" centered="true" />
@@ -91,18 +103,7 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
             <GlitchText text="フルスタック開発, UX/UIデザイン・改善, ユーザビリティ調査, サーバーレスWebサービス構築, 静的サイト構築, 動画制作, 組織開発, Pythonによる業務自動化, 情報設計, SEO最適化, 技術系記事の翻訳・紹介" className="text-lg" centered="true" />
         </div>
     </FadeInSection>
-    {/* Works */}
-    <section class="snap-start py-8 bg-white flex flex-col gap-8 h-screen items-center snap-start overflow-y-scroll w-full overflow-x-hidden relative">
-        <div class="absolute top-4 bg-black pt-2 px-6 z-10 mix-blend-exclusion">
-            <GlitchText text="Works" className="text-5xl md:text-6xl lg:text-7xl" centered="true" />
-        </div>
-        <div class="w-full z-10 h-screen pt-32">
-            <CardCarousel client:load />
-        </div>
-        <div class="w-full absolute top-0" style="filter: brightness(25%)">
-            <ResponsiveVideo src="/mov/AdobeStock_294764508.mp4" client:load/>
-        </div>
-    </section>
+
     {/* <FadeInSection client:load className="snap-start bg-gradient-to-t from-gray-700 to-gray-950 min-h-screen flex flex-col items-center justify-center">
         <form action="https://api.staticforms.xyz/submit" method="POST" class="max-w-md mx-auto space-y-6 p-6 bg-white shadow-md rounded fade-item w-3/4">
             <!-- 必須: Static FormsのAPIキー -->
