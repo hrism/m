@@ -13,12 +13,12 @@ import { SiQiita } from 'react-icons/si';
 import { GiAbstract024, GiAbstract076, GiAbstract065 } from 'react-icons/gi';
 
 const icons = [
-    { href: 'https://github.com/', icon: FaGithub },
-    { href: 'https://qiita.com/', icon: SiQiita },
-    { href: '/blog', icon: FaRss },
-    { href: 'https://twitter.com/', icon: FaXTwitter },
-    { href: 'https://facebook.com/', icon: FaFacebook },
-    { href: 'https://www.linkedin.com/', icon: FaLinkedin },
+    { href: 'https://github.com/hrism', icon: FaGithub },
+    { href: 'https://qiita.com/hrism', icon: SiQiita },
+    { href: 'https://hrism.hatenablog.com/', icon: FaRss },
+    { href: 'https://x.com/hrism2', icon: FaXTwitter },
+    { href: 'https://facebook.com/haruki.ishimaru', icon: FaFacebook },
+    { href: 'https://jp.linkedin.com/in/haruki-ishimaru-178687193', icon: FaLinkedin },
 ];
 const assetBase = import.meta.env.ASSET_BASE_URL;
 const birthYear = 1989;
@@ -70,25 +70,12 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
                 <div class="text-white text-xl">
                     <GlitchIcon Icon={GiAbstract024} />
                 </div>
-                <GlitchText text="現職" className="text-2xl" centered="true" />
+                <GlitchText text="経歴" className="text-2xl" centered="true" />
                 <div class="text-white text-xl">
                     <GlitchIcon Icon={GiAbstract024} />
                 </div>
             </div>
-            <GlitchText text="株式会社ストックラボのCOOとして、WEB全般および買取・販売事業を統括" className="text-lg" centered="true" />
-            <div class="scale-x-[1000.0] scale-y-75">
-                <GlitchText text="-" className="text-xs" centered="true" />
-            </div>
-            <div class="flex items-center gap-2">
-                <div class="text-white text-xl">
-                    <GlitchIcon Icon={GiAbstract065} />
-                </div>
-                <GlitchText text="経歴" className="text-2xl" centered="true" />
-                <div class="text-white text-xl">
-                    <GlitchIcon Icon={GiAbstract065} />
-                </div>
-            </div>
-            <GlitchText text="同志社大学を卒業後, 動画制作会社, 紙媒体デザイン会社, SIer, フリーランスを経て現職" className="text-lg" centered="true" />
+            <GlitchText text="同志社大学を卒業後, 動画制作会社, 紙媒体デザイン会社, SIer, フリーランスを経た後、株式会社ストックラボのCOOとして、WEB全般および買取・販売事業を統括" className="text-lg" centered="true" />
             <div class="scale-x-[1000.0] scale-y-75">
                 <GlitchText text="-" className="text-xs" centered="true" />
             </div>
@@ -113,10 +100,10 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
             <CardCarousel client:load />
         </div>
         <div class="w-full absolute top-0 brightness-50">
-            <ResponsiveVideo src="/mov/AdobeStock_294764508_Video_HD_Preview.mov" client:load />
+            <ResponsiveVideo src="/mov/AdobeStock_294764508.mp4" client:load />
         </div>
     </section>
-    <FadeInSection client:load className="snap-start bg-gradient-to-t from-gray-700 to-gray-950 min-h-screen flex flex-col items-center justify-center">
+    {/* <FadeInSection client:load className="snap-start bg-gradient-to-t from-gray-700 to-gray-950 min-h-screen flex flex-col items-center justify-center">
         <form action="https://api.staticforms.xyz/submit" method="POST" class="max-w-md mx-auto space-y-6 p-6 bg-white shadow-md rounded fade-item w-3/4">
             <!-- 必須: Static FormsのAPIキー -->
             <input type="hidden" name="apiKey" value="sf_del5cdeia0mlj0gjh611a3j5" />
@@ -150,10 +137,9 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
 
             <!-- ✅ reCAPTCHA表示 -->
             <div class="g-recaptcha" data-sitekey="6LdQpQArAAAAAEeX0eXwXtOx4bMSIueuAF4ueHkd"></div>
-            {/* <div class="g-recaptcha" data-sitekey="6LeD3wArAAAAADtmLa7-EDResbJsRpZEwkvHGE0w"></div> */}
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
             <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">送信</button>
         </form>
-    </FadeInSection>
+    </FadeInSection> */}
 </Layout>
