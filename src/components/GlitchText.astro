@@ -1,0 +1,27 @@
+---
+interface Props {
+    text: string;
+    className?: string;
+    mainTextClassName?: string;
+    centered?: boolean;
+}
+
+const { text, className, centered, mainTextClassName="text-white" } = Astro.props;
+
+const containerClass = centered ? 'block mx-auto text-center' : 'inline-block';
+---
+
+<div class={`relative ${containerClass} font-syncopate font-bold`}>
+    {/* シアンの影 */}
+    <span class={`absolute inset-0 opacity-80 text-cyan-400 animate-glitch z-0 ${className || ''}`}>
+        {text}
+    </span>
+    {/* マゼンタの影 */}
+    <span class={`absolute inset-0 opacity-80 text-pink-400 animate-glitch-reverse z-[-1] ${className || ''}`}>
+        {text}
+    </span>
+    {/* メインテキスト */}
+    <span class={`relative block text-center  z-10 ${className || ''} ${mainTextClassName || ''}`}>
+        {text}
+    </span>
+</div>

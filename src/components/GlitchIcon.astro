@@ -1,0 +1,47 @@
+---
+interface Props {
+    /**
+     * 呼び出し元でインポートしたアイコンを渡します。
+     * 例）import { IconHome } from "somewhere"
+     *     <GlitchIcon Icon={IconHome} />
+     */
+    Icon: any;
+
+    /**
+     * 全体のdivやアイコンの追加クラスを指定したい場合に使用します。
+     */
+    className?: string;
+
+    /**
+     * メインアイコンに適用するクラス名。デフォルトは `text-white`。
+     */
+    mainIconClassName?: string;
+
+    /**
+     * true の場合、アイコンを中央寄せ（block + mx-auto + text-center）にします。
+     * false の場合は inline-block で表示します。
+     */
+    centered?: boolean;
+}
+
+const { Icon, className, centered, mainIconClassName = 'text-white' } = Astro.props;
+
+const containerClass = centered ? 'block mx-auto text-center' : 'inline-block';
+---
+
+<div class={`relative ${containerClass}`}>
+    {/* シアンの影 */}
+    <span class={`absolute inset-0 opacity-80 text-cyan-400 animate-glitch z-0 ${className || ''}`}>
+        <Icon />
+    </span>
+
+    {/* マゼンタの影 */}
+    <span class={`absolute inset-0 opacity-80 text-pink-400 animate-glitch-reverse z-[-1] ${className || ''}`}>
+        <Icon />
+    </span>
+
+    {/* メインのアイコン */}
+    <span class={`relative block text-center z-10 ${className || ''} ${mainIconClassName}`}>
+        <Icon />
+    </span>
+</div>

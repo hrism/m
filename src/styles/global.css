@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* カスタムスタイル（必要なら追加） */
+body {
+  font-family: sans-serif;
+}
+
+@layer utilities {
+  .fade-item {
+      @apply blur-sm opacity-0 translate-y-5 transition-all duration-700 ease-out;
+  }
+  .fade-in {
+      @apply blur-none opacity-100 translate-y-0;
+  }
+}
