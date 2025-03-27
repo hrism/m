@@ -53,10 +53,10 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
             <CardCarousel client:load />
         </div>
         <div class="w-full absolute top-0" style="filter: brightness(25%)">
-            <ResponsiveVideo src="/mov/AdobeStock_294764508.mp4" client:load/>
+            <ResponsiveVideo src="/mov/AdobeStock_294764508.mp4" client:load />
         </div>
     </section>
-    <FadeInSection client:load className="snap-start bg-gradient-to-t from-gray-700 to-gray-950 min-h-screen pb-64 md:pb-0">
+    <FadeInSection client:load className="snap-start bg-gradient-to-t from-gray-700 to-gray-950 min-h-screen pb-16 md:pb-0">
         <div class="fade-item flex flex-col gap-8 p-8 items-center justify-center overflow-x-hidden">
             <GlitchText text="About me" className="text-5xl md:text-6xl lg:text-7xl" centered="true" />
             <div class="scale-x-[1000.0] scale-y-75">
@@ -102,45 +102,32 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
             </div>
             <GlitchText text="フルスタック開発, UX/UIデザイン・改善, ユーザビリティ調査, サーバーレスWebサービス構築, 静的サイト構築, 動画制作, 組織開発, Pythonによる業務自動化, 情報設計, SEO最適化, 技術系記事の翻訳・紹介" className="text-lg" centered="true" />
         </div>
+        <div class="fade-item p-4 md:p-8">
+            <div class="scale-x-[1000.0] scale-y-75">
+                <GlitchText text="-" className="text-xs" centered="true" />
+            </div>
+            <GlitchText text="Contact" className="text-5xl md:text-6xl lg:text-7xl py-6" centered="true" />
+            <form action="https://formspree.io/f/mdkelonr" method="POST" class="max-w-xl mx-auto p-6 bg-gray-900 text-white rounded-2xl shadow-lg space-y-6">
+                <input type="hidden" name="_next" value="/thanks" />
+
+                <div>
+                    <label class="block mb-2 text-sm font-semibold">お名前</label>
+                    <input type="text" name="name" required class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                </div>
+
+                <div>
+                    <label class="block mb-2 text-sm font-semibold">メールアドレス</label>
+                    <input type="email" name="email" required class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                </div>
+
+                <div>
+                    <label class="block mb-2 text-sm font-semibold">メッセージ</label>
+                    <textarea name="message" required rows="5" class="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-md bg-indigo-600 hover:bg-indigo-700 transition-colors font-semibold">送信</button>
+            </form>
+        </div>
     </FadeInSection>
 
-    {/* <FadeInSection client:load className="snap-start bg-gradient-to-t from-gray-700 to-gray-950 min-h-screen flex flex-col items-center justify-center">
-        <form action="https://api.staticforms.xyz/submit" method="POST" class="max-w-md mx-auto space-y-6 p-6 bg-white shadow-md rounded fade-item w-3/4">
-            <!-- 必須: Static FormsのAPIキー -->
-            <input type="hidden" name="apiKey" value="sf_del5cdeia0mlj0gjh611a3j5" />
-
-            <!-- 必須: replyToを有効にする -->
-            <input type="hidden" name="replyTo" value="@" />
-
-            <!-- 任意: 送信成功後のリダイレクト先 -->
-            <input type="hidden" name="redirectTo" value="/thanks" />
-
-            <!-- スパム対策: honeypot -->
-            <input type="text" name="honeypot" style="display: none" tabindex="-1" autocomplete="off" />
-
-            <!-- お名前 -->
-            <div>
-                <label for="name" class="block text-sm font-medium text-gray-700">お名前</label>
-                <input type="text" name="name" id="name" required class="border p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
-            </div>
-
-            <!-- メールアドレス -->
-            <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">メールアドレス</label>
-                <input type="email" name="email" id="email" required class="border p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" />
-            </div>
-
-            <!-- メッセージ -->
-            <div>
-                <label for="message" class="block text-sm font-medium text-gray-700">メッセージ</label>
-                <textarea name="message" id="message" rows="5" required class="border p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-            </div>
-
-            <!-- ✅ reCAPTCHA表示 -->
-            <div class="g-recaptcha" data-sitekey="6LdQpQArAAAAAEeX0eXwXtOx4bMSIueuAF4ueHkd"></div>
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">送信</button>
-        </form>
-    </FadeInSection> */}
 </Layout>

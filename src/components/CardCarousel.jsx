@@ -104,7 +104,7 @@ const works = [
 
 // CARD_WIDTH に基づいて全てのサイズ・位置を統一
 const CARD_WIDTH = 260
-const SPEED = 1.2
+const SPEED = 1.5
 const SPAWN_INTERVAL = CARD_WIDTH / SPEED * 18
 
 export default function AbsoluteScrollingCards() {
