@@ -159,7 +159,7 @@ export default function AbsoluteScrollingCards() {
           onClick={() => setSelectedWork(null)}
         >
           <div
-            className="bg-white p-6 rounded-lg max-w-md w-full shadow-lg max-w-[90vw] flex flex-col items-center justify-center gap-4"
+            className="bg-white p-2 md:p-6 rounded-lg max-w-md w-full shadow-lg max-w-[90vw] flex flex-col items-center justify-center gap-4"
             onClick={(e) => e.stopPropagation()}
           >
             <img src={`/img/${selectedWork.img}`} alt={selectedWork.title} className="shadow-md"/>
@@ -175,7 +175,7 @@ export default function AbsoluteScrollingCards() {
             <p className="text-gray-600">
               <strong>所要日数:</strong> 約{selectedWork.days}日間
             </p>
-            <p className="text-gray-700 max-h-48 overflow-y-scroll">{selectedWork.description}</p>
+            <p className="text-gray-700 max-h-24 md:max-h-48 overflow-y-scroll">{selectedWork.description}</p>
             <button
               className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
               onClick={() => setSelectedWork(null)}
