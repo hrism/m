@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const GLITCH_SHIFT = 50; // RGBの最大ズレ幅（px）
 const SHADOW_SIZE = 100; // 影の大きさ（px）
 const GLITCH_DURATION = { min: 100, max: 300 }; // グリッチの持続時間（ms）
-const GLITCH_INTERVAL = { min: 500, max: 1500 }; // グリッチの発生間隔（ms）
+const GLITCH_INTERVAL = { min: 1500, max: 4500 }; // グリッチの発生間隔（ms）
 const SCANLINE_COUNT = { min: 1, max: 5 }; // 走査線の本数（ランダム・全RGB合計）
 const SCANLINE_WIDTH = { min: 1, max: 100 }; // 走査線の太さ（ランダム）
 
