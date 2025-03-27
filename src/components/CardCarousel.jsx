@@ -156,9 +156,6 @@ export default function AbsoluteScrollingCards() {
             <img src={`/img/${work.img}`} alt={work.title} className="w-full"/>
             <div className="text-lg text-white font-semibold mt-1 text-center">{work.title}</div>
             <div className="text-sm text-white text-center">{work.client}様（{work.year}）</div>
-            {/* <div className="text-sm text-gray-500">{work.year}</div>
-            <div className="text-lg font-semibold">{work.title}</div>
-            <div className="text-sm text-gray-600">{work.client}</div> */}
           </div>
         )
       })}
@@ -170,25 +167,27 @@ export default function AbsoluteScrollingCards() {
           onClick={() => setSelectedWork(null)}
         >
           <div
-            className="bg-white p-2 md:p-6 rounded-lg md:max-w-md w-full shadow-lg max-w-[90vw] flex flex-col items-center justify-center gap-4"
+            className="bg-white p-4 md:p-6 rounded-lg md:max-w-md w-full shadow-lg max-w-[90vw] max-h-[80dvh] flex flex-col items-center justify-center md:gap-4 gap-2"
             onClick={(e) => e.stopPropagation()}
           >
             <img src={`/img/${selectedWork.img}`} alt={selectedWork.title} className="shadow-md"/>
-            <a href={selectedWork.link} target="_blank" rel="noopener noreferrer" className="underline hover:underline-offset-2 text-cyan-600">
+            <a href={selectedWork.link} target="_blank" rel="noopener noreferrer" className="underline hover:underline-offset-2 text-cyan-600 text-center">
               <h2 className="text-xl font-bold">{selectedWork.title}</h2>
             </a>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-center">
               <strong>クライアント:</strong> {selectedWork.client}様
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-center">
               <strong>制作年:</strong> {selectedWork.year}
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-center">
               <strong>所要日数:</strong> 約{selectedWork.days}日間
             </p>
-            <p className="text-gray-700 max-h-24 md:max-h-48 overflow-y-scroll">{selectedWork.description}</p>
+            <p className="text-gray-700 max-h-24 md:max-h-48 overflow-y-scroll p-2 bg-slate-200">{
+              selectedWork.description}
+            </p>
             <button
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-2"
               onClick={() => setSelectedWork(null)}
             >
               閉じる
