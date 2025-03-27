@@ -167,7 +167,7 @@ export default function AbsoluteScrollingCards() {
           onClick={() => setSelectedWork(null)}
         >
           <div
-            className="bg-white p-4 md:p-6 rounded-lg md:max-w-md w-full shadow-lg max-w-[90vw] max-h-[80dvh] flex flex-col items-center justify-center md:gap-4 gap-2"
+            className="bg-white p-4 md:p-6 rounded-lg md:max-w-md w-full shadow-lg max-w-[90vw] max-h-[90dvh] flex flex-col items-center justify-center md:gap-4 gap-2"
             onClick={(e) => e.stopPropagation()}
           >
             <img src={`/img/${selectedWork.img}`} alt={selectedWork.title} className="shadow-md"/>
