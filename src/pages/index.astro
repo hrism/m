@@ -64,7 +64,7 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
             </div>
             <GlitchText text="イシマル ハルキ" className="text-2xl" centered="true" />
             <GlitchText text={birthInfo} className="text-base" centered="true" />
-            <ul class="flex w-full gap-4 justify-center">
+            <ul class="flex w-full gap-4 justify-center hide-when-param">
                 {
                     icons.map(({ href, icon: Icon }) => (
                         <li>
@@ -102,7 +102,7 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
             </div>
             <GlitchText text="フルスタック開発, UX/UIデザイン・改善, ユーザビリティ調査, サーバーレスWebサービス構築, 静的サイト構築, 動画制作, 組織開発, Pythonによる業務自動化, 情報設計, SEO最適化, 技術系記事の翻訳・紹介" className="text-lg" centered="true" />
         </div>
-        <div class="fade-item p-4 md:p-8">
+        <div class="fade-item p-4 md:p-8 hide-when-param">
             <div class="scale-x-[1000.0] scale-y-75">
                 <GlitchText text="-" className="text-xs" centered="true" />
             </div>
@@ -129,5 +129,13 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
             </form>
         </div>
     </FadeInSection>
-
+    <script type="module" client:load>
+        const urlParams = new URLSearchParams(window.location.search);
+        // ここで「特定のパラメータ名」を指定する（例: hideContent）
+        if (urlParams.has('hideContent')) {
+            document.querySelectorAll('.hide-when-param').forEach((el) => {
+                el.classList.add('hidden');
+            });
+        }
+    </script>
 </Layout>
