@@ -127,7 +127,7 @@ const AnimatedText = ({ text, onComplete }) => {
 
         // GSAPでフェードインアニメーション
         if (textRef.current) {
-            gsap.fromTo(textRef.current, 
+            gsap.fromTo(textRef.current,
                 { opacity: 0, y: 10 },
                 { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }
             );

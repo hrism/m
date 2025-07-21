@@ -109,7 +109,7 @@ const works = [
     img: 'sakuad.webp',
     year: 2025,
     days: 7,
-    description: 'スキマバイト黎明期のプロジェクトを、別会社から引き継ぐかたちで参画。React + Laravelで構築されたシステムは、ワーカー・募集者（法人／個人）など複数のロールが存在するにもかかわらず、画面上ではその違いが整理されていない状態でした。まずは情報設計（IA）から再構築し、各ロールごとにフローや画面を一から整理し直す大規模な改修を実施。その後「農業」という明確な訴求軸を見出すことで、サービスとしても着実に成長を遂げていきました。',
+    description: '広告運用代行サービスのランディングページにおいて、デザインから実装・公開までのすべてを担当しました。クライアントからは大まかな構成案のみが渡されており、そこから各セクションのコンテンツ詳細、テキスト構成、情報設計を自ら行いました。UIデザインはFigmaで作成し、実装を前提とした構成とコンポーネント設計を行っています。フロントエンドはAstroとTailwind CSSで構築し、アニメーションやインタラクションも含めて実装しています。フォームやLINE連携ボタン、各種CTAの動作、アニメーション制御も自作しました。最終的なビルド・最適化・ホスティング（Netlify）まで含めて対応し、Lighthouseスコアのパフォーマンスも高水準で維持しています。デザインと開発の両面から、集客とコンバージョンを意識した構成に仕上げています。',
     as: ["WEBデザイナー", "フロントエンドエンジニア"],
   },
 ]
@@ -157,7 +157,7 @@ export default function AbsoluteScrollingCards() {
     };
 
     animationRef.current = requestAnimationFrame(animate);
-    
+
     return () => {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);

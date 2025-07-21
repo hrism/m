@@ -50,15 +50,15 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
         <div class="absolute inset-0 z-0">
             <ResponsiveVideo src="/mov/AdobeStock_294764508.mp4" client:visible />
         </div>
-        
+
         {/* 暗いオーバーレイ */}
         <div class="absolute inset-0 bg-black bg-opacity-60 z-1"></div>
-        
+
         {/* Works タイトル */}
         <div class="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black pt-2 px-6 z-20 mix-blend-exclusion">
             <GlitchText text="Works" className="text-5xl md:text-6xl lg:text-7xl" centered="true" />
         </div>
-        
+
         {/* カードカルーセル */}
         <div class="w-full z-10 h-full pt-32 relative">
             <CardCarousel client:load />
