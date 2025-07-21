@@ -58,7 +58,7 @@
 
 // export default HideOnScroll;
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { gsap } from "gsap";
 
 const HideOnScroll = ({ children }) => {
   const ref = useRef(null);
@@ -72,56 +72,53 @@ const HideOnScroll = ({ children }) => {
 
     const initialHeight = ref.current.scrollHeight;
     setHeight(initialHeight);
-    // console.log("Initial Height:", initialHeight);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // console.log("BoundingClientRect.top:", entry.boundingClientRect.top);
-        // console.log("BoundingClientRect.height:", entry.boundingClientRect.height);
-        // console.log("Intersection Ratio:", entry.intersectionRatio);
-        // console.log("Current Hidden State:", isHiddenRef.current);
-
         if (entry.intersectionRatio < 0.5 && !isHiddenRef.current) {
-          // console.log("Element is more than 50% hidden, setting `hidden: true`");
           isHiddenRef.current = true;
           setHidden(true);
-          setCanRestore(false); // **戻り判定を一旦無効化**
+          setCanRestore(false); // 戻り判定を一旦無効化
 
-          setTimeout(() => {
-            setHeight(1);
-            // console.log("Set Height to 1px");
-            setTimeout(() => {
-              setCanRestore(true); // **消えるアニメーション完了後に戻り判定を有効化**
-            }, 500); // **アニメーションの長さと合わせる**
-          }, 100);
+          // GSAPでアニメーション
+          gsap.to(ref.current, {
+            height: 1,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            onComplete: () => {
+              setCanRestore(true); // アニメーション完了後に戻り判定を有効化
+            }
+          });
         }
       },
       {
         root: null,
-        threshold: [0.5], // **50% 隠れたら発火**
+        threshold: [0.5],
         rootMargin: "-5% 0px 0px 0px",
       }
     );
 
     observer.observe(ref.current);
 
-    // **スクロールイベントで復帰判定**
+    // スクロールイベントで復帰判定
     const handleScroll = () => {
-      if (!ref.current || !canRestore) return; // **消えるアニメーションが完了するまで発火しない**
+      if (!ref.current || !canRestore) return;
 
       const boundingTop = ref.current.getBoundingClientRect().top;
 
-      // **画面内に 1px でも入ったら復帰**
+      // 画面内に 1px でも入ったら復帰
       if (boundingTop >= 0 && isHiddenRef.current) {
-        // console.log("Element has re-entered the viewport, setting `hidden: false`");
         isHiddenRef.current = false;
         setHidden(false);
 
-        setTimeout(() => {
-          if (ref.current) {
-            setHeight(ref.current.scrollHeight);
-          }
-        }, 100);
+        // GSAPで復帰アニメーション
+        gsap.to(ref.current, {
+          height: initialHeight,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out"
+        });
       }
     };
 
@@ -131,19 +128,16 @@ const HideOnScroll = ({ children }) => {
       observer.unobserve(ref.current);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [canRestore]); // **戻りチェックフラグを監視**
+  }, [canRestore]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ height: height, opacity: 1 }}
-      animate={{ height: hidden ? 1 : height, opacity: hidden ? 0 : 1 }}
-      transition={{ height: { duration: 0.5 }, opacity: { duration: 0.3, delay: 0.1 } }}
       className="hide-on-scroll overflow-hidden"
-      style={{ minHeight: "1px" }} // **監視を維持するために minHeight を適用**
+      style={{ minHeight: "1px" }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 

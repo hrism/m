@@ -45,15 +45,23 @@ const birthInfo = `${age}歳, ${birthYear}年6月生まれ`;
         <GlitchImage pcSrc="/img/hero3.jpg" mobileSrc="/img/hero_mobile.jpg" alt="" client:load />
     </section>
     {/* Works */}
-    <section class="snap-start py-8 bg-white flex flex-col gap-8 h-screen items-center snap-start overflow-y-scroll w-full overflow-x-hidden relative">
-        <div class="absolute top-4 bg-black pt-2 px-6 z-10 mix-blend-exclusion">
+    <section class="snap-start py-8 bg-black flex flex-col gap-8 h-screen items-center overflow-y-scroll w-full overflow-x-hidden relative">
+        {/* 背景動画 */}
+        <div class="absolute inset-0 z-0">
+            <ResponsiveVideo src="/mov/AdobeStock_294764508.mp4" client:visible />
+        </div>
+        
+        {/* 暗いオーバーレイ */}
+        <div class="absolute inset-0 bg-black bg-opacity-60 z-1"></div>
+        
+        {/* Works タイトル */}
+        <div class="absolute top-4 left-1/2 transform -translate-x-1/2 bg-black pt-2 px-6 z-20 mix-blend-exclusion">
             <GlitchText text="Works" className="text-5xl md:text-6xl lg:text-7xl" centered="true" />
         </div>
-        <div class="w-full z-10 h-screen pt-32">
+        
+        {/* カードカルーセル */}
+        <div class="w-full z-10 h-full pt-32 relative">
             <CardCarousel client:load />
-        </div>
-        <div class="w-full absolute top-0" style="filter: brightness(25%)">
-            <ResponsiveVideo src="/mov/AdobeStock_294764508.mp4" client:load />
         </div>
     </section>
     <FadeInSection client:load className="snap-start bg-gradient-to-t from-gray-700 to-gray-950 min-h-screen pb-16 md:pb-0">

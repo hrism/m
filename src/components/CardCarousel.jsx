@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { gsap } from "gsap";
 
 const works = [
   {
@@ -79,7 +80,7 @@ const works = [
     as: ["UI/UXデザイナー", "フロントエンドエンジニア"],
   },
   {
-    id: 7,
+    id: 8,
     title: '法律事務職員転職.jp',
     client: '株式会社C&Rリーガル・エージェンシー',
     link: 'https://legal-agent.jp/houritsujimushokuin/',
@@ -90,7 +91,7 @@ const works = [
     as: ["UI/UXデザイナー", "コーダー"],
   },
   {
-    id: 8,
+    id: 9,
     title: 'シェアジョブ',
     client: '株式会社エントリー',
     link: 'https://sharejob.jp/',
@@ -100,23 +101,35 @@ const works = [
     description: 'スキマバイト黎明期のプロジェクトを、別会社から引き継ぐかたちで参画。React + Laravelで構築されたシステムは、ワーカー・募集者（法人／個人）など複数のロールが存在するにもかかわらず、画面上ではその違いが整理されていない状態でした。まずは情報設計（IA）から再構築し、各ロールごとにフローや画面を一から整理し直す大規模な改修を実施。その後「農業」という明確な訴求軸を見出すことで、サービスとしても着実に成長を遂げていきました。',
     as: ["UI/UXデザイナー", "フロントエンドエンジニア"],
   },
+  {
+    id: 10,
+    title: 'サクアド',
+    client: '株式会社tety',
+    link: 'https://sakuad.netlify.app/',
+    img: 'sakuad.webp',
+    year: 2025,
+    days: 7,
+    description: 'スキマバイト黎明期のプロジェクトを、別会社から引き継ぐかたちで参画。React + Laravelで構築されたシステムは、ワーカー・募集者（法人／個人）など複数のロールが存在するにもかかわらず、画面上ではその違いが整理されていない状態でした。まずは情報設計（IA）から再構築し、各ロールごとにフローや画面を一から整理し直す大規模な改修を実施。その後「農業」という明確な訴求軸を見出すことで、サービスとしても着実に成長を遂げていきました。',
+    as: ["WEBデザイナー", "フロントエンドエンジニア"],
+  },
 ]
 
 // CARD_WIDTH に基づいて全てのサイズ・位置を統一
 const CARD_WIDTH = 260
-const SPEED = 1.5
-const SPAWN_INTERVAL = CARD_WIDTH / SPEED * 18
+const SPEED = 2.0 // スピードを上げる
+const SPAWN_INTERVAL = 3000 // 3秒ごとにカード生成
 
 export default function AbsoluteScrollingCards() {
   const [cards, setCards] = useState([])
   const [selectedWork, setSelectedWork] = useState(null)
   const cardIdRef = useRef(0)
   const workIndexRef = useRef(0)
+  const animationRef = useRef(null)
 
   // カード生成
   useEffect(() => {
     const interval = setInterval(() => {
-      const randomTop = Math.random() * (window.innerHeight * 0.75 - 300)
+      const randomTop = Math.random() * (window.innerHeight * 0.6 - 300) + 100 // 位置を調整
 
       const newCard = {
         id: cardIdRef.current++,
@@ -132,32 +145,35 @@ export default function AbsoluteScrollingCards() {
     return () => clearInterval(interval)
   }, [])
 
-  // アニメーション（右→左に流す）
+  // requestAnimationFrameを使ったアニメーション
   useEffect(() => {
-    let frame
-
     const animate = () => {
-      setCards(prev =>
-        prev
+      setCards(prev => {
+        return prev
           .map(card => ({ ...card, right: card.right + SPEED }))
           .filter(card => card.right < window.innerWidth + CARD_WIDTH)
-      )
-      frame = requestAnimationFrame(animate)
-    }
+      });
+      animationRef.current = requestAnimationFrame(animate);
+    };
 
-    frame = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(frame)
-  }, [])
+    animationRef.current = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <div className="relative w-full h-64">
+    <div className="relative w-full h-full">
       {cards.map(card => {
         const work = works[card.workIndex]
         return (
           <div
             key={card.id}
             onClick={() => setSelectedWork(work)}
-            className="absolute top-[50px] p-4 bg-gray-800/75 backdrop-blur-3xl rounded-lg shadow hover:brightness-50 cursor-pointer transition mix-blend-color-dodge flex flex-col gap-2 justify-center items-center"
+            className="absolute p-4 bg-gray-800/75 backdrop-blur-3xl rounded-lg shadow hover:brightness-50 cursor-pointer transition mix-blend-color-dodge flex flex-col gap-2 justify-center items-center"
             style={{
               right: `${card.right}px`,
               top: `${card.top}px`,

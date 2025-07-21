@@ -94,8 +94,8 @@
 // };
 
 // export default HeroText;
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const animationSpeed = 10; // ← ここを変更すればアニメーションの速度を簡単に調整可能
 
@@ -103,6 +103,7 @@ const AnimatedText = ({ text, onComplete }) => {
     const targetCharCode = text.charCodeAt(0);
     const startCharCode = Math.max(targetCharCode - 7, 32); // 10個前の文字から開始
     const [displayText, setDisplayText] = useState(String.fromCharCode(startCharCode));
+    const textRef = useRef(null);
 
     useEffect(() => {
         if (text === " ") {
@@ -124,19 +125,25 @@ const AnimatedText = ({ text, onComplete }) => {
             }
         }, animationSpeed); // ← アニメーションの速度をここで変更
 
+        // GSAPでフェードインアニメーション
+        if (textRef.current) {
+            gsap.fromTo(textRef.current, 
+                { opacity: 0, y: 10 },
+                { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }
+            );
+        }
+
         return () => clearInterval(interval);
     }, [text, onComplete]);
 
     return (
-        <motion.span
+        <span
+            ref={textRef}
             className="inline-block"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
             style={{ whiteSpace: "pre" }}
         >
             {displayText}
-        </motion.span>
+        </span>
     );
 };
 
